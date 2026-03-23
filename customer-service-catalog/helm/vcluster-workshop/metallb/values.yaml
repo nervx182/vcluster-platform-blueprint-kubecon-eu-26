@@ -1,0 +1,20 @@
+namespace:
+  labels:
+    project-name: "vcluster-workshop"
+    stage: "test"
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
+poolName: first-pool
+addresses:
+  - <no value>/32
+
+metallb:
+  prometheus:
+    serviceMonitor:
+      speaker:
+        additionalLabels:
+          monitoring.instance: "vcluster-workshop-test"
+      controller:
+        additionalLabels:
+          monitoring.instance: "vcluster-workshop-test"

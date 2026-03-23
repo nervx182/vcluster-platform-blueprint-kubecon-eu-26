@@ -1,0 +1,31 @@
+crds:
+  install: true
+
+namespace:
+  labels:
+    project-name: "vcluster-workshop"
+    stage: "test"
+
+kyverno:
+  admissionController:
+    serviceMonitor:
+      additionalLabels:
+        monitoring.instance: "vcluster-workshop-test"
+  backgroundController:
+    serviceMonitor:
+      additionalLabels:
+        monitoring.instance: "vcluster-workshop-test"
+  cleanupController:
+    serviceMonitor:
+      additionalLabels:
+        monitoring.instance: "vcluster-workshop-test"
+  reportsController:
+    serviceMonitor:
+      additionalLabels:
+        monitoring.instance: "vcluster-workshop-test"
+  # FIX: https://github.com/kyverno/kyverno/issues/15116
+  kyverno-api:
+    labels:
+      app.kubernetes.io/managed-by: Helm
+    annotations:
+      meta.helm.sh/release-name: kyverno

@@ -1,0 +1,9 @@
+namespace:
+  labels:
+    project-name: "vcluster-workshop"
+    stage: "test"
+metrics-server:
+  serviceMonitor:
+    additionalLabels:
+      monitoring:
+        instance: "vcluster-workshop-test"

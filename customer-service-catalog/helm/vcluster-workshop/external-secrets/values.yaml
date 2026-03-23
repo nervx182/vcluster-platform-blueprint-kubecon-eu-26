@@ -1,0 +1,26 @@
+clusterSecretStores: {}
+namespace:
+  labels:
+    project-name: "vcluster-workshop"
+    stage: "test"
+external-secrets:
+  serviceMonitor:
+    additionalLabels:
+      monitoring.instance: "vcluster-workshop-test"
+  bitwarden-sdk-server:
+    enabled: true
+
+
+certificate:
+  name: bitwarden-sdk-server-cert
+  issuerName: bitwarden-sdk-selfsigned
+  secretName: bitwarden-tls-certs
+  commonName: bitwarden-sdk-server.external-secrets.svc
+  dnsNames:
+    - bitwarden-sdk-server
+    - bitwarden-sdk-server.external-secrets
+    - bitwarden-sdk-server.external-secrets.svc
+    - bitwarden-sdk-server.external-secrets.svc.cluster.local
+
+issuer:
+  name: bitwarden-sdk-selfsigned

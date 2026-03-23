@@ -1,0 +1,16 @@
+traefik:
+  api:
+    dashboard: true
+  ingressRoute:
+    dashboard:
+      activated: false
+  metrics:
+    prometheus:
+      serviceMonitor:
+        additionalLabels:
+          monitoring.instance: "vcluster-workshop-test"
+
+namespace:
+  labels:
+    project-name: "vcluster-workshop"
+    stage: "test"
